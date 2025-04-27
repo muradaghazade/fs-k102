@@ -6,6 +6,7 @@ class Story(models.Model):
     text = models.TextField()
     image = models.ImageField(upload_to='images/')
     category = models.ForeignKey('Category', related_name='stories', on_delete=models.CASCADE)
+    tags = models.ManyToManyField('Tag', related_name='stories')
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
