@@ -27,3 +27,7 @@ def story_detail(request, id):
         'tags': tags,
     }
     return render(request, 'single.html', context)
+
+
+def about(request):
+    return render(request, 'about.html')
