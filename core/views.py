@@ -2,7 +2,7 @@ from django.shortcuts import render
 from core.models import *
 
 def home(request):
-    stories = Story.objects.order_by('-id')
+    stories = Story.objects.order_by('-id')[:4]
     last_story = stories.first()
     categories = Category.objects.all()
     holiday = Story.objects.filter(category__title='Holiday')
@@ -31,3 +31,13 @@ def story_detail(request, id):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def stories(request):
+    stories = Story.objects.order_by('-id')
+    categories = Category.objects.all()
+    context = {
+        'stories': stories,
+        'categories': categories,
+    }
+    return render(request, 'stories.html', context)
